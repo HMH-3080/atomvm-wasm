@@ -1,0 +1,38 @@
+{
+  "name": "@hmh-3080/atomvm-wasm",
+  "version": "0.1.0",
+  "description": "Single-threaded AtomVM runtime for running Elixir and Erlang in the browser, without SharedArrayBuffer or cross-origin isolation",
+  "keywords": [
+    "atomvm",
+    "beam",
+    "elixir",
+    "erlang",
+    "wasm",
+    "webassembly",
+    "playground"
+  ],
+  "license": "Apache-2.0",
+  "type": "module",
+  "files": [
+    "wasm",
+    "scripts",
+    "patches",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "build": "bash scripts/build.sh",
+    "check": "bash scripts/check.sh"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/HMH-3080/atomvm-wasm.git"
+  },
+  "homepage": "https://github.com/HMH-3080/atomvm-wasm#readme",
+  "bugs": {
+    "url": "https://github.com/HMH-3080/atomvm-wasm/issues"
+  }
+}
