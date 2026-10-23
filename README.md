@@ -65,6 +65,31 @@ The patch contains:
 npm run check
 ```
 
+## Upgrading
+
+The build inputs are overridable environment variables, so an upgrade does not require editing the
+script:
+
+| Variable | Default |
+| --- | --- |
+| `FISSIONVM_REF` | pinned FissionVM commit |
+| `MBEDTLS_REF` | `v3.6.3.1` |
+| `EMSDK_IMAGE` | `emscripten/emsdk:3.1.74` |
+| `BUNDLE_URL` | pinned `live-codes/elixir-browser-eval` bundle |
+
+```bash
+FISSIONVM_REF=<new-commit> MBEDTLS_REF=<new-tag> BUNDLE_URL=<new-url> npm run build
+npm run check
+```
+
+Then bump the version in `package.json`, publish with `npm publish --access public`, and update the
+package version in LiveCodes (`src/livecodes/vendors.ts`). Run the LiveCodes Elixir/Erlang Playwright
+suites before merging.
+
+If FissionVM changed the files touched by `patches/fissionvm-no-pthread.patch`, rebase the patch
+onto the new commit, rebuild, and confirm the output still has `callMain` and no
+`SharedArrayBuffer`/pthread references (`npm run check` does this).
+
 ## License
 
 AtomVM and FissionVM are licensed under Apache-2.0. Elixir and Erlang/OTP are Apache-2.0. Popcorn
